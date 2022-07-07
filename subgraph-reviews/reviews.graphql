@@ -1,0 +1,37 @@
+type Query {
+  "The three latest reviews submitted by FlyBy's locations"
+  latestReviews: [Review!]!
+}
+
+type Mutation {
+  submitReview(locationReview: LocationReviewInput): SubmitReviewResponse!
+}
+
+"A review submitted on the FlyBy site"
+type Review {
+  id: ID!
+  "The comment of the review"
+  comment: String
+  "Numerical rating from 1 (worst) - 5 (best)"
+  rating: Int
+}
+
+input LocationReviewInput {
+  "The reviewers comment"
+  comment: String!
+  "Numerical rating from 1 (worst) - 5 (best)"
+  rating: Int!
+  "Location this review is about"
+  locationId: String!
+}
+
+type SubmitReviewResponse {
+  "response code, similar to HTTP code"
+  code: Int!
+  "whether the mutation was successful"
+  success: Boolean!
+  "user-readable message suitable for displaying on frontend"
+  message: String!
+  "The newly created Review"
+  review: Review
+}
