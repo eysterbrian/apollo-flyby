@@ -1,0 +1,16 @@
+type Query {
+  "Full list of all locations in the system"
+  locations: [Location!]!
+  "Returns a specific location"
+  location(id: ID!): Location
+}
+
+type Location {
+  id: ID!
+  "name of the location"
+  name: String!
+  "short description for this location"
+  description: String!
+  "Url to the main photo for the location"
+  photo: String!
+}
